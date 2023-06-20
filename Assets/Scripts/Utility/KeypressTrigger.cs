@@ -36,6 +36,6 @@ public class KeypressTrigger : MonoBehaviour
 
     public void TestMethodToCall(string message = "Hello World! The Keypress Trigger is working!") 
     {
-        print(message);
+        print(message.Length == 0 ? "Hello World! The Keypress Trigger is working!" : message);
     }
 }
