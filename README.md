@@ -9,6 +9,7 @@ There is some "Scene Management" which just let's you easily link a button or a 
 
 KeypressTrigger is a script that just let's you combine a keypress with a UnityEvent. So, for example, if you want to test a method you just created without writing something like 
 
+```
 void Update ()
 {
   if(Input.GetKeyDown(KeyCode.K)){
@@ -16,5 +17,5 @@ void Update ()
       PerformMethodIJustCreated();
   }
 }
-
+```
 You can, in the editor via the Inspector tab, create an empty object with a KeyPressTrigger Component and choose a keycode and then drag and drop your script and method into the OnKeypressEvent.
