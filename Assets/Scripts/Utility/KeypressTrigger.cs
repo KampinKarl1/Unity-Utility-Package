@@ -33,4 +33,9 @@ public class KeypressTrigger : MonoBehaviour
         if (Input.GetKeyUp(activatingKey))
             timeHeld = 0f;
     }
+
+    public void TestMethodToCall(string message = "Hello World! The Keypress Trigger is working!") 
+    {
+        print(message);
+    }
 }
