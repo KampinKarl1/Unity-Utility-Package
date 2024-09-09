@@ -48,6 +48,49 @@ public class ObjectSpawner : MonoBehaviour
     [SerializeField] WeightedPrefab[] weightedPrefabs = new WeightedPrefab[0];
 
     [SerializeField] private int numObjectsToSpawn = 5;
+
+
+public static void SpawnObjects(int numToSpawn, GameObject[] prefabArray, float [] weights, SpawnConditions spawnConditions, Transform parent = null) 
+    {
+        if (parent == null)
+            //Create a parent for organizing the scene (and quick deletion)
+            parent = new GameObject($"Spawned objects (Time Stamp: {System.DateTime.Now})").transform;
+
+        for (int i = 0; i < numToSpawn; i++) 
+        {
+            GameObject prefab = prefabArray[0];
+
+            //Make a random percentage
+            float rand = Random.Range(0.0f, 1.0f);
+
+            //Pick one thats closest to and higher than the percentage
+            for (int j = 0; j < weights.Length; j++)
+            {
+                if (weights[j] > rand)
+                {
+                    prefab = prefabArray[j];
+                }
+            }
+
+            //Randomize Rot
+            Quaternion randRot = Vec3_Utils.RandomizedRotation(spawnConditions.randRot);
+
+            //Gen position
+            Vector2 horzRand = Random.insideUnitCircle * spawnConditions.radius;
+
+            Vector3 pos = spawnConditions.spawnPos + new Vector3(horzRand.x, 0f, horzRand.y);
+
+            GameObject spawned = Instantiate(prefab, pos, randRot);
+
+            //Randomize Scale            
+            Vec3_Utils.RandomizedVector3(spawnConditions.x_randScale.constantMin, spawnConditions.x_randScale.constantMax,
+            spawnConditions.y_randScale.constantMin, spawnConditions.y_randScale.constantMax,
+            spawnConditions.z_randScale.constantMin, spawnConditions.z_randScale.constantMax);
+
+            spawned.transform.parent = parent;
+        }
+    }
+    
     internal void SpawnPrefabs(SpawnConditions spawnConditions) 
     {
         //Create a parent for organizing the scene (and quick deletion)
