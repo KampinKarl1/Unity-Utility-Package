@@ -24,6 +24,31 @@ public static class TransformUtils
         type = default(T);
         return false;
     }
+
+    public static bool TryFindInTransform<T>(Transform parent, out T type, int maxChildren)
+    {
+        Transform curParent = parent;
+
+        int size = curParent.childCount;
+
+        for (int i = 0; i < size; i++)
+        {
+            if (i == maxChildren)
+                break;
+
+            Transform child = curParent.GetChild(i);
+
+            if (child.TryGetComponent(out type))
+                return true;
+
+            else if (child.childCount > 0)
+                return TryFindInTransform<T>(child, out type, maxChildren - i);
+        }
+
+        type = default(T);
+        return false;
+    }
+
     public static T FindInTransform<T>(string name, Transform parent)
     {
         name = name.ToLower();
@@ -36,7 +61,7 @@ public static class TransformUtils
         {
             Transform child = curParent.GetChild(i);
 
-            if (child.name == name
+            if (child.name.Contains(name)
                 && child.TryGetComponent(out T type))
                 return type;
 
@@ -62,6 +87,24 @@ public static class TransformUtils
 
             if (child.childCount > 0)
                 result.AddRange(GetAllChildren(child));
+        }
+
+        return result.ToArray();
+    }
+
+    public static T[] GetAllInChildren<T>(Transform parent) 
+    {
+        List<T> result = new List<T>();
+
+        for (int i = 0; i < parent.childCount; i++)
+        {
+            Transform child = parent.GetChild(i);
+
+            if (child.childCount > 0)
+                result.AddRange(GetAllInChildren<T>(child));
+
+            if (child.TryGetComponent(out T type))
+                result.Add(type);
         }
 
         return result.ToArray();
