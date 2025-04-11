@@ -1,5 +1,6 @@
 using UnityEngine;
-
+namespace FeedMyKids1.Utilities
+{
 /// <summary>
 /// Easy way to set up a Singleton. BUILT ON MONOBEHAVIOUR.
 /// Use this.SetInstance to initialize. 
@@ -21,4 +22,5 @@ public class Singleton<T> : MonoBehaviour
 
     protected static T instance;
     public static T Instance => instance;
+}
 }
