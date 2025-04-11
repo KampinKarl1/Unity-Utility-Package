@@ -2,7 +2,8 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-
+namespace FeedMyKids1.Utilities
+{
 public class KeypressTrigger : MonoBehaviour
 {
     [SerializeField] KeyCode activatingKey = KeyCode.B;
@@ -38,4 +39,5 @@ public class KeypressTrigger : MonoBehaviour
     {
         print(message.Length == 0 ? "Hello World! The Keypress Trigger is working!" : message);
     }
+}
 }
