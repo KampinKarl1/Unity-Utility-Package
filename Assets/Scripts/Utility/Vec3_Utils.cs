@@ -1,5 +1,9 @@
 using UnityEngine;
 using UnityEngine.AI;
+
+
+namespace FeedMyKids1.Utilities
+{
 public static class Vec3_Utils
 {
     public static Vector3 RandomizeAll(float min, float max)
@@ -93,4 +97,5 @@ public static class Vec3_Utils
                             me.position.y,
                             me.position.z + Random.Range(-dist, dist));
     }
+}
 }
