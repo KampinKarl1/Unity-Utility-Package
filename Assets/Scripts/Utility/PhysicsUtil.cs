@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-//using System.Threading.Tasks; //Can't be used for GameObjects
 
+namespace FeedMyKids1.Utilities
+{
 public class PhysicsUtil
 {
     private static int bufferSize = 256;
@@ -75,4 +76,5 @@ public class PhysicsUtil
         return result;
     }
 
+}
 }
