@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace EasyUtils
+namespace FeedMyKids1.Utilities
 {
     public class FrameRateLimiter : MonoBehaviour
     {
