@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
+namespace FeedMyKids1.Utilities
+{
 /// <summary>
 /// Can give an object a bit of variety by changing the active shown object at start. 
 /// Example: Synty and PolyPerfect have characters with lots of gameobjects/character models; you can randomly choose those models with this script.
@@ -43,4 +45,5 @@ public class MultiModelObject : MonoBehaviour
             return RandomIndex();
         return index;
     }
+}
 }
