@@ -1,4 +1,6 @@
 ﻿using System;
+namespace FeedMyKids1.Utilities
+{
 public static class ArrayUtils
 {
     public static T GetRandomElement<T>(ref T[] array)
@@ -10,4 +12,5 @@ public static class ArrayUtils
 
         return array[UnityEngine.Random.Range(0, array.Length)];
     }
+}
 }
