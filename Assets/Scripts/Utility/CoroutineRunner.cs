@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace FeedMyKids1.Utilities
+{
 public class CoroutineRunner : MonoBehaviour
 {
     private static CoroutineRunner instance = null;
@@ -30,4 +31,5 @@ public class CoroutineRunner : MonoBehaviour
         yield return new WaitForSeconds(delay);
         action.Invoke();
     }
+}
 }
