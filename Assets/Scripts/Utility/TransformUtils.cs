@@ -1,7 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
+namespace FeedMyKids1.Utilities
+{
 public static class TransformUtils 
 {
     public static bool TryFindInTransform <T>(Transform parent, out T type) 
@@ -109,4 +110,5 @@ public static class TransformUtils
 
         return result.ToArray();
     }
+}
 }
